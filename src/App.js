@@ -1,25 +1,51 @@
-import logo from './logo.svg';
-import './App.css';
+import makeData from './makeData'
+import TableRederer from './TableRender'
+import './App.css'
 
 function App() {
+  const data = makeData(20, [])
+  const columns = [
+    {
+      Header: 'Name',
+      columns: [
+        {
+          Header: 'First Name',
+          accessor: 'firstName',
+        },
+        {
+          Header: 'Last Name',
+          accessor: 'lastName',
+        },
+      ],
+    },
+    {
+      Header: 'Info',
+      columns: [
+        {
+          Header: 'Age',
+          accessor: 'age',
+        },
+        {
+          Header: 'Visits',
+          accessor: 'visits',
+        },
+        {
+          Header: 'Status',
+          accessor: 'status',
+        },
+        {
+          Header: 'Profile Progress',
+          accessor: 'progress',
+        },
+      ],
+    },
+  ]
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <TableRederer columns={columns} data={data} />
+    </>
+  )
 }
 
-export default App;
+export default App
